@@ -1,3 +1,4 @@
+## 26 / 5 / 2014
 ## 21 / 5 / 2014
 ## Jon Minton
 ## Code for replicating results in SSTE article
@@ -27,6 +28,14 @@
 #     [1] tools_3.0.2
 
 
+# Main stages:
+
+# 1) Add correct dependencies (packages)
+# 2) Read in source file
+# 3) Check for and download HMD
+# 4) Check for and produce Rdata
+# 5) Run analyses 
+
 
 rm(list=ls())
 
@@ -35,22 +44,17 @@ require(repmis)
 require(httr)
 require(digest)
 require(devtools)
+require(lattice)
+require(downloader) 
+require(xlsx)
 
-source("Scripts/Functions.R") # Some issues with the function download at the moment - inconsistency - worked first time 
- # But not subsequent times
+OlderData=TRUE # Change this to false to use more recent
+# Data from the HMD, or keep as TRUE for full reproducibility of results
 
-# Write code to download and uppack, but only after checking that the file has not already been downloaded
 
-url_oldData <- "https://www.dropbox.com/s/frv4leanuym1kii/hmd_countries_Earlier.zip"
-url_newerData <- "https://www.dropbox.com/s/qcp8yk1f20lx6c0/hmd_statistics_12_05_2014.zip"
+source("Scripts/Functions.R") 
+source("Scripts/Manage_Prerequisites.R")
 
-download_file_url(
-    url=url_oldData,
-    outfile="HMD_old.zip"
-    )
 
-Unpack_HMD(
-    zipfile="HMD_old.zip",
-    outlocation="Data/HMD/Old/"
-    )
+
 
