@@ -13,7 +13,7 @@ Unpack_HMD <- function(
     
     system(
         command_for_system, 
-        wait=F
+        wait=T # Change to wait =F if this does not work
         )
 }
 
