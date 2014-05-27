@@ -9,7 +9,6 @@ source("Scripts/Check_for_and_download_HMD.R")
 # Country codes : older
 dir.create("Data/Derived/", showWarnings=F, recursive=T)
 if (OlderData){
-    require("xlsx")
     Country_Codes_Older <- read.xlsx(
         file="Data/CountryCodes.xlsx",
         sheetName="Country_Codes"    
