@@ -43,6 +43,10 @@
 # nate.minton@gmail.com
 
 ##############################################################################################################
+# For any updates or corrections to this script please visit the GitHub repo:
+# https://github.com/JonMinton/SSTE_Replication
+
+#################################################################################################################
 
 rm(list=ls())
 
