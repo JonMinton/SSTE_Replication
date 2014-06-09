@@ -555,7 +555,16 @@ GraphImpute <- function(X, uselog=T, repeat.it=F){
 
 
 
-Make3dPlot <-function(Datablock, country="GBRTENW", sex="male", col="lightgrey", specular="black", return.valmat=F, ages=0:80, axes=F, box=F, xlab="", ylab="", zlab="", impute=F, repeat.it=F, log.it=F){
+Make_3D_Plot <-function(
+  Datablock, 
+  country="GBRTENW", 
+  sex="male", 
+  col="lightgrey", 
+  specular="black", 
+  return.valmat=F, 
+  ages=0:80, axes=F, box=F, xlab="", ylab="", zlab="", impute=F, 
+  repeat.it=F, log.it=F
+  ){
     
     valMatrix <- GetValMat(Datablock, country=country, sex=sex, ages=ages)
     
@@ -701,3 +710,82 @@ getCohortDeathRates <- function(input, ages=0:80){
     return(output)
 }
 
+
+
+####
+
+Make_3D_Plot.UI <- function(
+  Datablock, 
+  country="GBRTENW", 
+  sex="male", 
+  col="lightgrey", 
+  specular="black", 
+  return.valmat=F, 
+  ages=0:80, axes=F, box=F, xlab="", ylab="", zlab=""
+  
+  ){
+  
+  countries <- sort(as.character(Country.Codes$Country.Name))
+  
+  this.country <- tk_select.list(
+    choices=countries, 
+    multiple=F, 
+    title="Pick Country"
+  )
+  this.country_code <- Country.Codes$Country.Code[Country.Codes$Country.Name==this.country]
+  # Now find subgroups without group
+  
+  sexes <- c(
+    "male",
+    "female",
+    "total"
+    )
+  
+  this.sex <- tk_select.list(
+    choices=sexes,
+    multiple=F,
+    title="Pick sex"
+  )
+  
+  this.logchoice <- tk_select.list(
+    choices=c("yes" ,"no"),
+    multiple=F,
+    title="Log values?"
+    )
+  
+  this.logchoice <- switch(
+      this.logchoice,
+      "yes"=TRUE,
+      "no"=FALSE
+      )
+  
+  this.spinchoice <- tk_select.list(
+      choices=c("yes", "no"),
+      multiple=F,
+      title="Spin animation?"
+      )
+  
+  this.spinchoice <- switch(
+      this.spinchoice,
+      "yes"= TRUE,
+      "no"=FALSE
+      )
+  
+  output <- Make_3D_Plot(
+    Datablock, 
+    country=this.country_code, 
+    sex=this.sex, 
+    col="lightgrey", 
+    specular="black", 
+    return.valmat=F, 
+    ages=0:80, axes=F, box=F, xlab="", ylab="", zlab="", 
+    impute=T, 
+    repeat.it=T, 
+    log.it=this.logchoice    
+    )
+  
+  if (this.spinchoice){
+      play3d(spin3d())
+  }
+  return(output)
+}
