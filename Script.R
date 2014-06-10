@@ -1,3 +1,4 @@
+##  7 / 6/ 2014
 ## 27 / 5 / 2014
 ## 26 / 5 / 2014
 ## 21 / 5 / 2014
@@ -59,17 +60,36 @@ require(lattice)
 require(latticeExtra)
 require(downloader) 
 require(xlsx)
+require(rgl)
+require(tcltk)
+
+Run_3D_Vis = TRUE
 
 OlderData=TRUE # Change this to false to use more recent
 # Data from the HMD, or keep as TRUE for full reproducibility of results
-
+Replicate_Figures = FALSE
 
 source("Scripts/Functions.R") 
 source("Scripts/Manage_Prerequisites.R")
 
-# Figures to replicate
-source("Scripts/Make_Figures.R")
 
+if (Replicate_Figures){
+  # Figures to replicate
+  source("Scripts/Make_Figures.R")  
+}
+
+#debug(Make_3D_Plot.UI)
+if (Run_3D_Vis){
+#  tmp <- Make_3D_Plot.UI(DeathRates)
+    
+#     Make_3D_Plot(DeathRates,country="DEUTE", sex="female")
+#     play3d(spin3d())
+    Make_3D_Plot(DeathRates,country="NOR", sex="diff", log=T)
+
+#    Make_3D_Plot(Populations,country="DEUTE", sex="female", axes=T, box=T)
+    # Note : It would be good to develop the Make_3D_Plot function to 
+    # preserve axis information
+}
 
 
 
