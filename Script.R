@@ -80,7 +80,6 @@ if (Replicate_Figures){
 
 #debug(Make_3D_Plot.UI)
 if (Run_3D_Vis){
-<<<<<<< HEAD
 #  tmp <- Make_3D_Plot.UI(DeathRates)
     
 #     Make_3D_Plot(DeathRates,country="DEUTE", sex="female")
@@ -88,11 +87,7 @@ if (Run_3D_Vis){
     Make_3D_Plot(DeathRates,country="NOR", sex="diff", log=T)
 
 #    Make_3D_Plot(Populations,country="DEUTE", sex="female", axes=T, box=T)
-    # Note : It would be good to develop the Make_3D_Plot function to 
-    # preserve axis information
-=======
-  tmp <- Make_3D_Plot.UI(DeathRates)
->>>>>>> fceb2b7ae96b8379b1e181401914db34f4a28f5f
+
 }
 
 
