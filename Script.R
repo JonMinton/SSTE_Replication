@@ -51,17 +51,21 @@
 
 rm(list=ls())
 
-require(RCurl)
-require(repmis)
-require(httr)
-require(digest)
-require(devtools)
-require(lattice)
-require(latticeExtra)
-require(downloader) 
-require(xlsx)
-require(rgl)
-require(tcltk)
+# install and load packages
+source("Scripts/LoadPackages.R")
+package.list <- c("RCurl",
+                  "repmis",
+                  "httr", 
+                  "digest", 
+                  "devtools", 
+                  "lattice",
+                  "latticeExtra", 
+                  "downloader", 
+                  "xlsx", 
+                  "rgl", 
+                  "tcltk")
+RequiredPackages(package.list)
+rm(list = ls())
 
 Run_3D_Vis = TRUE
 
