@@ -1,5 +1,5 @@
 #############################################
-#'  @title Funciton for loading packages
+#'  @title Function for loading packages
 #' 
 #'  @description Useful for loading several required packages at the same time. 
 #'  
