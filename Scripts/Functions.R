@@ -748,8 +748,7 @@ Make_3D_Plot.UI <- function(
   sexes <- c(
     "male",
     "female",
-    "total",
-    "diff"
+    "total"
     )
   
   this.sex <- tk_select.list(

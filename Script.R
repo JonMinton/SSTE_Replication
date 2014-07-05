@@ -65,7 +65,7 @@ package.list <- c("RCurl",
                   "rgl", 
                   "tcltk")
 RequiredPackages(package.list)
-rm(list = ls())
+
 
 Run_3D_Vis = TRUE
 
