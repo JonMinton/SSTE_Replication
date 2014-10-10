@@ -260,3 +260,49 @@ print(contourplot(log(Female) ~ Year * Age, data=this.ds, region=T, col.regions=
 )
 dev.off()
 
+
+
+
+#################
+this.ds <- DeathRates[["GBR_SCO"]]
+this.ds <- subset(this.ds, Age < 81)
+
+tiff("Figures/Male_LogDeath.tiff", height=1200, width=1200)
+
+print(contourplot(log(Male) ~ Year * Age, data=this.ds, region=T, col.regions=rev(heat.colors(200)), cuts=20,
+                  main="Males, Log of death rates"
+)
+)
+dev.off()
+
+this.ds <- DeathRates[["GBR_SCO"]]
+this.ds <- subset(this.ds, Age < 81)
+
+tiff("Figures/Female_LogDeath.tiff", height=1200, width=1200)
+
+print(contourplot(log(Female) ~ Year * Age, data=this.ds, region=T, col.regions=rev(heat.colors(200)), cuts=20,
+                  main="Females, Log of death rates"
+)
+)
+dev.off()
+
+this.ds <- Populations.numeric[["GBR_SCO"]]
+this.ds <- subset(this.ds, Age < 81)
+
+tiff("Figures/Male_Pop.tiff", height=1200, width=1200)
+
+print(contourplot(Male ~ Year * Age, data=this.ds, region=T, col.regions=rev(heat.colors(200)), cuts=20,
+                  main="Males, Population counts"
+)
+)
+dev.off()
+
+
+tiff("Figures/Female_Pop.tiff", height=1200, width=1200)
+
+print(contourplot(Female ~ Year * Age, data=this.ds, region=T, col.regions=rev(heat.colors(200)), cuts=20,
+                  main="Females, Population counts"
+)
+)
+dev.off()
+
